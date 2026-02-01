@@ -29,6 +29,7 @@ jobs:
       - name: 📦 Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install markdown
       
       - name: 🤖 Generate new article
         env:
@@ -65,6 +66,10 @@ jobs:
           git add _posts/
           if ! git diff --quiet --staged; then
             git commit -m "🤖 Auto-generate: New article $(date +'%Y-%m-%d')"
+            # Build HTML site
+            python scripts/build_site.py
+            git add public/
+            git commit -m "🔨 Build HTML site"
             git push
             echo "✅ Changes pushed successfully"
           else
