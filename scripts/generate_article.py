@@ -288,6 +288,14 @@ reading_time: {random.randint(8, 15)}
         filename = f"{fecha.strftime('%Y-%m-%d')}-{slug}.md"
         filepath = POSTS_DIR / filename
         
+        # Verificar si ya existe un artículo para hoy
+        fecha_hoy = fecha.strftime('%Y-%m-%d')
+        articulos_hoy = list(POSTS_DIR.glob(f"{fecha_hoy}-*.md"))
+        if articulos_hoy:
+            print(f"   ℹ️  Ya existe un artículo para hoy: {articulos_hoy[0].name}")
+            print(f"   ⏭️  Saltando generación...")
+            return articulos_hoy[0]
+        
         # Crear front matter
         front_matter = self.crear_front_matter(titulo, categoria, keywords, productos)
         
