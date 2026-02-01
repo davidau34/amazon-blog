@@ -8,14 +8,13 @@ email: dcoletb@hotmail.com
 
 # Build settings
 markdown: kramdown
-# theme: minima  # Deshabilitado - usamos layouts custom
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
 # Configuración de posts
-permalink: /:year/:month/:day/:title/
+permalink: pretty
 paginate: 10
 paginate_path: "/page:num/"
 
@@ -34,21 +33,15 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - scripts/
+  - vendor
+  - scripts
   - .env
   - requirements.txt
   - README.md
-  - .github/
-
-# Collections
-collections:
-  pages:
-    output: true
-    permalink: /:path/
+  - .github
+  - test_workflow.sh
+  - INSTRUCCIONES-IMAGENES.md
+  - TROUBLESHOOTING.md
 
 # Defaults
 defaults:
