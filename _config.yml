@@ -1,0 +1,60 @@
+# Configuración del Blog de Afiliados Amazon
+title: "TechDeals - Las Mejores Ofertas de Amazon"
+description: "Descubre los mejores productos de tecnología, gadgets y más en Amazon con análisis detallados y ofertas exclusivas"
+baseurl: "" # Cambia esto si tu repo no es username.github.io
+url: "https://davidau34.github.io" # Cambia por tu URL de GitHub Pages
+author: "TechDeals Team"
+email: dcoletb@hotmail.com
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Configuración de posts
+permalink: /:year/:month/:day/:title/
+paginate: 10
+paginate_path: "/page:num/"
+
+# Amazon Associates
+amazon_associate_id: "davidau342123-21" # IMPORTANTE: Cambia esto por tu ID de Amazon Associates
+
+# Social Media
+twitter_username: davidau34
+instagram_username: tu_usuario_instagram
+
+# Google Analytics (opcional)
+google_analytics: UA-XXXXXXXXX-X
+
+# Excluir archivos del build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - scripts/
+  - .env
+  - requirements.txt
+  - README.md
+  - .github/
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "TechDeals Team"
