@@ -1,8 +1,8 @@
 # Configuración del Blog de Afiliados Amazon
 title: "TechDeals - Las Mejores Ofertas de Amazon"
 description: "Descubre los mejores productos de tecnología, gadgets y más en Amazon con análisis detallados y ofertas exclusivas"
-baseurl: "" # Cambia esto si tu repo no es username.github.io
-url: "https://davidau34.github.io" # Cambia por tu URL de GitHub Pages
+baseurl: "/amazon-blog" # Subpath del sitio (nombre del repositorio)
+url: "https://davidau34.github.io" # URL base de GitHub Pages
 author: "TechDeals Team"
 email: dcoletb@hotmail.com
 
