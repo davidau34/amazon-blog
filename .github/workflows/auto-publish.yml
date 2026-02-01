@@ -1,9 +1,9 @@
 name: Auto-Generar y Publicar Artículos
 
 on:
-  # schedule:
-  #   # DESACTIVADO - Ejecutar cada 2 días a las 10:00 AM UTC
-  #   - cron: '0 10 */2 * *'
+  schedule:
+    # Ejecutar cada 2 días a las 10:00 AM UTC
+    - cron: '0 10 */2 * *'
   
   workflow_dispatch:  # Permite ejecutar manualmente desde GitHub
 
