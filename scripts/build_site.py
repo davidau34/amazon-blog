@@ -286,6 +286,9 @@ def parse_post(filepath):
                     front_matter[key.strip()] = value.strip().strip('"')
             content = parts[2]
     
+    # Reemplazar placeholders de Amazon ANTES de convertir a HTML
+    content = replace_amazon_links(content, SITE_CONFIG['amazon_id'])
+    
     # Convertir markdown a HTML
     md = markdown.Markdown(extensions=['extra', 'codehilite'])
     html_content = md.convert(content)
@@ -310,9 +313,6 @@ def build_post_page(post_file):
     date = front_matter.get('date', '')
     category = front_matter.get('category', '')
     image = front_matter.get('image', '')
-    
-    # Reemplazar enlaces de Amazon
-    content = replace_amazon_links(content, SITE_CONFIG['amazon_id'])
     
     # Crear slug del filename
     slug = post_file.replace('.md', '')
