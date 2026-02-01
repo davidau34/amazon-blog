@@ -234,6 +234,16 @@ Escribe SOLO el contenido del artículo en Markdown, sin introducción ni notas 
         # Generar excerpt
         excerpt = f"Descubre todo sobre {', '.join(productos[:2])} y más. Análisis detallado, comparativas y guía de compra actualizada 2026."
         
+        # Imágenes de Unsplash por categoría (gratis, alta calidad, sin copyright)
+        imagenes_categoria = {
+            'Gadgets Tech': 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=1200&h=630&fit=crop',
+            'Fitness': 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=630&fit=crop',
+            'Cocina': 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=630&fit=crop',
+            'Mascotas': 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1200&h=630&fit=crop',
+        }
+        
+        imagen_url = imagenes_categoria.get(categoria, 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=630&fit=crop')
+        
         front_matter = f"""---
 layout: post
 title: "{titulo}"
@@ -241,7 +251,7 @@ date: {fecha.strftime('%Y-%m-%d %H:%M:%S')} +0000
 category: {categoria}
 tags: [{', '.join([f'"{k}"' for k in keywords[:5]])}]
 excerpt: "{excerpt}"
-image: https://via.placeholder.com/1200x630.png?text={titulo.replace(' ', '+')}
+image: {imagen_url}
 author: "Tech Deals Team"
 reading_time: {random.randint(8, 15)}
 ---
