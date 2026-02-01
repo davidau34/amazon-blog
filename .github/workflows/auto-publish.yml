@@ -63,7 +63,6 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add _posts/
-          git add productos_amazon.json 2>/dev/null || true
           if ! git diff --quiet --staged; then
             git commit -m "🤖 Auto-generate: New article $(date +'%Y-%m-%d')"
             git push

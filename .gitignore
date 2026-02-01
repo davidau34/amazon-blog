@@ -54,3 +54,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Generated files (not needed in repo)
+productos_amazon.json
