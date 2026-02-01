@@ -148,6 +148,35 @@ def create_html_template(title, content, is_home=False):
             text-decoration: none;
             font-weight: 600;
         }}
+        .amazon-link {{
+            display: inline-block;
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }}
+        .amazon-link:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255,153,0,0.3);
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }}
+        table th, table td {{
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }}
+        table th {{
+            background: #667eea;
+            color: white;
+        }}
         .read-more:hover {{
             text-decoration: underline;
         }}
@@ -263,6 +292,16 @@ def parse_post(filepath):
     
     return front_matter, html_content
 
+def replace_amazon_links(content, amazon_id):
+    """Reemplaza placeholders [AMAZON_LINK:...] con enlaces de afiliado reales"""
+    def create_amazon_link(match):
+        product_key = match.group(1)
+        # Convertir el key en un término de búsqueda
+        search_term = product_key.replace('_', '+')
+        return f'<a href="https://www.amazon.es/s?k={search_term}&tag={amazon_id}" target="_blank" rel="nofollow noopener" class="amazon-link">Ver en Amazon 🛒</a>'
+    
+    return re.sub(r'\[AMAZON_LINK:([^\]]+)\]', create_amazon_link, content)
+
 def build_post_page(post_file):
     """Construye una página individual de post"""
     front_matter, content = parse_post(POSTS_DIR / post_file)
@@ -271,6 +310,9 @@ def build_post_page(post_file):
     date = front_matter.get('date', '')
     category = front_matter.get('category', '')
     image = front_matter.get('image', '')
+    
+    # Reemplazar enlaces de Amazon
+    content = replace_amazon_links(content, SITE_CONFIG['amazon_id'])
     
     # Crear slug del filename
     slug = post_file.replace('.md', '')
