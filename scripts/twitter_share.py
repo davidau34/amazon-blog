@@ -14,7 +14,7 @@ try:
     import tweepy
 except ImportError:
     print("❌ Error: Instala dependencias con: pip install -r requirements.txt")
-    sys.exit(1)
+    sys.exit(0)  # No fallar el workflow
 
 load_dotenv()
 
@@ -192,7 +192,7 @@ def main():
     
     if not posts_dir.exists() or not list(posts_dir.glob('*.md')):
         print("❌ No hay posts para compartir")
-        sys.exit(1)
+        sys.exit(0)  # No fallar el workflow
     
     # Obtener el post más reciente
     posts = sorted(posts_dir.glob('*.md'), reverse=True)

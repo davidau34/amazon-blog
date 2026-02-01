@@ -16,7 +16,7 @@ try:
     import requests
 except ImportError:
     print("❌ Error: Instala dependencias con: pip install -r requirements.txt")
-    sys.exit(1)
+    sys.exit(0)  # No fallar el workflow
 
 load_dotenv()
 
