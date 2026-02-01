@@ -8,7 +8,7 @@ email: dcoletb@hotmail.com
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima  # Deshabilitado - usamos layouts custom
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
